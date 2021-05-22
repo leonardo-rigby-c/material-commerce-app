@@ -1,0 +1,42 @@
+@font-face {
+  font-family: NunitoRegular;
+  src: url("/assets/fonts/Nunito/Nunito-Regular.ttf");
+}
+@font-face {
+  font-family: NunitoSemiBold;
+  src: url("/assets/fonts/Nunito/Nunito-SemiBold.ttf");
+}
+@font-face {
+  font-family: NunitoBold;
+  src: url("/assets/fonts/Nunito/Nunito-Bold.ttf");
+}
+@font-face {
+  font-family: NunitoLight;
+  src: url("/assets/fonts/Nunito/Nunito-light.ttf");
+}
+.b-flex-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.b-flex-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.b-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+* {
+  font-family: NunitoRegular;
+}
+:root {
+  --green: #00ff00;
+  --red: #ff0000;
+  --blue: #0000ff;
+  --yellow: #ffd700;
+  --orange: #ff8c00;
+  --green-light: #caff70;
+}
