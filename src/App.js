@@ -11,7 +11,7 @@ function App() {
   return (
     // <div className="app-container">
       <BrowserRouter>
-        <Route exact path="/"><Store /></Route>
+        <Route path="/store"><Store /></Route>
         <Route path="/admin"><Admin /></Route>
       </BrowserRouter>
     // </div>

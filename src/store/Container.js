@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import '../styles/store/Container.css'
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import Register from './Register';
+import Login from './Login';
 
 class Container extends Component {
     constructor(props) {
@@ -8,23 +11,9 @@ class Container extends Component {
     }
     render() { 
         return ( 
-            <div className="container-fluid main-container">
-                <div className="row">
-                <div className="col-12 b-search">
-                        <input type="text" className="" placeholder="Busqueda... "/>
-                        <buttton className="btn-search">Search</buttton>
-                    </div>
-                    <div className="col-12 col-md-4">
-                        <img src='/assets/ilustrations/building.svg' />
-                    </div>
-                    <div className="col-12 col-md-4">
-                        <img src='/assets/ilustrations/under-construction.svg' />
-                    </div>
-                    <div className="col-12 col-md-4">
-                        <img src='/assets/ilustrations/city-life.svg' />
-                    </div>
-                </div>
-
+            <div className=" main-container">
+                <Route path="/store/register"><Register /></Route>
+                <Route path="/store/login"><Login /></Route>
             </div>
          );
     }
