@@ -20,7 +20,7 @@ class Navbar extends React.Component {
   render() {
     return (
 
-      <div className="container-fluid b-header-bar">
+      <div className="container-fluid b-header-bar fixed-top">
           <div className="row b-row">
             <div className="col-xs-6 col-sm-6 col-md-4 b-flex-left">
             {/* <img className="menu-icon" onClick={this.togleSidebar} src="/assets/ilustrations/menu.svg" alt="menu-icon"/> */}
@@ -33,6 +33,8 @@ class Navbar extends React.Component {
             </div>
 
             <div className="col-xs-6 col-sm-6 col-md-4 b-menu-icon">
+              <p>Angel Ivan Reyes Hernández</p>
+              <img  className="logo-img" src="/assets/ilustrations/under-construction.svg" alt="logo-ilustration" />
                {/* <Avatar src={this.state.avatarSrc}/> */}
             </div>
         </div>

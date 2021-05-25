@@ -1,6 +1,11 @@
+
 .store-container {
-  padding-top: 90px;
-  padding-left: 69px;
+  padding-top:120px;
+  padding-left: 75px;
+  padding-bottom: 200px;
+  
+  background-size: cover;
+
 }
 img {
   max-width: 100%;

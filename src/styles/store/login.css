@@ -1,0 +1,15 @@
+.central-container{
+    background-color:white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 2px 2px 2px 2px var(--orange);
+}
+
+.center-item{
+    padding-left: 33%;
+}
+.btn{
+    background-color: var(--orange);
+    color:white;
+
+}

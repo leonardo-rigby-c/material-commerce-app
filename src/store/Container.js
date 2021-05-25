@@ -3,6 +3,7 @@ import '../styles/store/Container.css'
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Register from './Register';
 import Login from './Login';
+import Home from './Home';
 
 class Container extends Component {
     constructor(props) {
@@ -14,6 +15,7 @@ class Container extends Component {
             <div className=" main-container">
                 <Route path="/store/register"><Register /></Route>
                 <Route path="/store/login"><Login /></Route>
+                <Route path="/store/home"><Home /></Route>
             </div>
          );
     }

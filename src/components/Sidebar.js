@@ -28,13 +28,13 @@ export class Sidebar extends React.Component {
                     </div>
                   </div>
                 </div>
-              <NavLink exact className="link" activeClassName="active" to="/home">
+              <NavLink exact className="link" activeClassName="active" to="/store/home">
                 <div className="b-col section-profile">
                   <div className="b-link">
                   <div className="b-icon">
-                    <i className="fas fa-user icon-menu"></i>
+                    <i className="fas fa-home icon-menu"></i>
                     </div>
-                    <span>Profile</span>
+                    <span>Home</span>
                   </div>
                   <hr />
                 </div>

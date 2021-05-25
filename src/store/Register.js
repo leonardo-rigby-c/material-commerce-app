@@ -6,11 +6,11 @@ class Register extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          username: 'leo',
-          name: 'Leonardo',
-          lastname: 'Rigby',
-          email: 'leorigbyc@gmail.com',
-          password: 'L!verpoolrc0293'
+          username: '',
+          name: '',
+          lastname: '',
+          email: '',
+          password: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this)
 
@@ -29,7 +29,7 @@ class Register extends React.Component {
   
         console.log(credentials);
         
-        const api = 'http://localhost:8080/comercializadora-api/register.php';
+        const api = 'http://webdevelopersgdl.com/comercializadora/comercializadora-api/userRegister.php';
   
         axios.post(api, JSON.stringify(credentials))
           .then(function (response) {
