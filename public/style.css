@@ -37,6 +37,7 @@
   --red: #ff0000;
   --blue: #0000ff;
   --yellow: #ffd700;
-  --orange: rgb(251,206,117);
-  --green-light: #caff70;
+  --orange: orange;
+  --greenlight: #caff70;
+  --orange-filter: green;
 }

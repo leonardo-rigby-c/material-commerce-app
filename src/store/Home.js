@@ -13,13 +13,24 @@ class Home extends React.Component {
     render() { 
         return ( 
             <div className="container container-home">
+                <div className="row">
+                <div className="col-md-4 offset-4 input-text">
+                    <h1 >Nombre Empresa</h1>
+                    <h4 className="slogan">¡Slogan de la Empresa!</h4>
+                
+            </div>
+            </div>
             <div className="row">
-                <div className="col-md-12 fondo-input">
-                    <input type="text" class="form-control" placeholder="Buscar ..." />
-                </div>
+                <div className="col-md-8 offset-2 input">
+                   <input className="form-control" placeholder="¿ Qué deseas buscar ?" />
+                   <i className="fas fa-search "></i>
+                
+            </div>
+            </div>
 
-                </div>
-                </div>
+            </div>
+
+            
          );
     }
 }

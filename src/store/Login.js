@@ -23,15 +23,17 @@ class Login extends React.Component{
   
         console.log(credentials);
         
-        const api = 'http://webdevelopersgdl.com/comercializadora/comercializadora-api/userLogin.php';
+        const api = 'http://webdevelopersgdl.com/comercializadora-material/api/login/index.php';
   
         axios.post(api, JSON.stringify(credentials))
           .then(function (response) {
               console.log(response);
-              if(response.status === 201 ){
-                // rthis.callCreatedAlert();
-                alert("User login");
-              }
+              localStorage.clear();
+              localStorage.setItem("jwt",response.data.jwt);
+              localStorage.setItem("username",response.data.userName);
+              window.location.href="/store/home/";
+
+              
           }
         ).catch(function (error) {
             console.log(error)
@@ -44,7 +46,7 @@ class Login extends React.Component{
             <div className="row">
             <div className="col-xs-12 col-sm-6 col-md-4 ">
               </div>
-              <div className="col-xs-12 col-sm-6 col-md-4 central-container">
+              <div className="col-xs-12 col-sm-6 col-md-4 login">
                 <h3 className="text-center">Login</h3>
               <form onSubmit={this.login}>
                 <label >
@@ -57,7 +59,7 @@ class Login extends React.Component{
                   <input className="form-control" type="password" required value={this.state.password} onChange={(event) => this.setState({ password: event.target.value})} />
                   <br />
                   <div className="center-item">
-                    <button className="btn " type="submit" value="Submit" >Iniciar Sesión</button>
+                    <button className="btn boton-login" type="submit" value="Submit" >Iniciar Sesión</button>
                   </div>
               </form>
 

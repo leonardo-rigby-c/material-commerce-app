@@ -12,7 +12,7 @@ class Footer extends Component {
                 <div className="row ">
                     <footer >
                         <div className="row bod">
-                            <div className="col-md-2 b-flex-center">
+                            <div className="col-md-2 ">
                                 <img src="/assets/ilustrations/under-construction.svg" alt="logo-ilustration"/>
 
                             </div>
@@ -32,6 +32,11 @@ class Footer extends Component {
                             <div className="col-md-2">
                                 <h6>Contacto:</h6>
                                 <p>(123)31233</p>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-4 offset-4">
+                                
                             </div>
                         </div>
                     </footer>

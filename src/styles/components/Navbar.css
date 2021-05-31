@@ -8,7 +8,9 @@
   background-color: #ffffff;
   top: 0;
   left: 0;
-  padding-left: 81px;
+  margin-left: 4%;
+  padding: auto !important;
+  overflow-x: hidden;
 }
 .b-logo {
   display: flex;
@@ -58,4 +60,11 @@
 .b-menu-icon p{
   padding-top: 5%;
   padding-right: 2%;
+}
+.fa-shopping-cart{
+  color: var( --orange );
+  font-size: 20px;
+  margin-top: 2%;
+  margin-left: 3%;
+  cursor: pointer;
 }

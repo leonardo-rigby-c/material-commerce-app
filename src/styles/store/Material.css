@@ -1,0 +1,87 @@
+.table-material{
+margin-bottom: 25%;
+}
+
+.hr-title {
+    width: 100%;
+    background-color:var(--orange);
+    float: left;
+    margin-top: -2%;
+    margin-left: 10%;
+}
+.table{
+    height: 440px;
+    overflow-x: auto;
+    overflow-y: auto;
+    box-shadow: 0 1px 2px 0 var(--orange), 0 2px 6px 2px var(--orange);
+
+}
+.products {
+
+    border-radius: 10px;
+
+}
+
+.tables {
+    margin-top: 3%;
+}
+
+.add-one,
+.add-exel {
+    font-size: 23px;
+    margin-left: 10%;
+    cursor: pointer;
+}
+
+.add-exel {
+    color: green;
+
+}
+
+.add-one {
+    color: red;
+}
+
+.boton-cancelar {
+    background-color: var(--orange);
+    color: white;
+}
+
+.opt {
+    margin-left: 15%;
+}
+
+.csv-input {
+    width: 40%;
+}
+
+.input-add-one{
+    width: 100%;
+    border-radius: 10px;
+    border-color:  var(--orange);
+    padding: 10px;
+    margin: 0%;
+}
+
+#text-area, #select-add-one{
+    width: 100%;
+    border-radius: 10px;
+    border-color:  var(--orange);
+    padding: 10px;
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+}
+
+#select-add-one{
+    margin-bottom: 20%;
+}
+.codigo-producto{
+    padding: 10px;
+    padding-top: 0%;
+    margin-top: 0%;
+
+}
+
+.acept-add-one{
+    background-color: var(--orange);
+    color: white;
+}

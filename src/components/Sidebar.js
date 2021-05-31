@@ -40,7 +40,7 @@ export class Sidebar extends React.Component {
                 </div>
               </NavLink>
               <div className="section-access">
-              <NavLink className="link" activeClassName="active" to="/users">
+              <NavLink className="link" activeClassName="active" to="/store/users">
                 <div className="b-col">
                   <div className="b-link">
                   <div className="b-icon">
@@ -50,7 +50,7 @@ export class Sidebar extends React.Component {
                   </div>
                 </div>
               </NavLink>
-              <NavLink className="link" activeClassName="active" to="/schedule">
+              <NavLink className="link" activeClassName="active" to="/store/schedule">
                 <div className="b-col">
                   <div className="b-link">
                     <div className="b-icon">
@@ -60,7 +60,7 @@ export class Sidebar extends React.Component {
                   </div>
                 </div>
               </NavLink>
-              <NavLink className="link" activeClassName="active" to="/profile">
+              <NavLink className="link" activeClassName="active" to="/store/profile">
                 <div className="b-col">
                   <div className="b-link ">
                   <div className="b-icon">
@@ -70,7 +70,7 @@ export class Sidebar extends React.Component {
                   </div>
                 </div>
               </NavLink>
-              <NavLink className="link" activeClassName="active" to="/settings">
+              <NavLink className="link" activeClassName="active" to="/store/settings">
                 <div className="b-col">
                   <div className="b-link">
                     <div className="b-icon">
@@ -81,8 +81,19 @@ export class Sidebar extends React.Component {
                   <hr />
                 </div>
               </NavLink>
+              <NavLink className="link" activeClassName="active" to="/store/products">
+                <div className="b-col">
+                  <div className="b-link">
+                    <div className="b-icon">
+                    <i className="fas fa-boxes icon-menu"></i>
+                    </div>
+                    <span>Materiales</span>
+                  </div>
+                  <hr />
+                </div>
+              </NavLink>
               </div>
-              <NavLink className="link" activeClassName="active" to="/signup">
+              <NavLink className="link" activeClassName="active" to="/store/register">
                 <div className="b-col">
                   <div className="b-link">
                     <div className="b-icon">
@@ -92,7 +103,7 @@ export class Sidebar extends React.Component {
                   </div>
                 </div>
               </NavLink>
-              <NavLink className="link" activeClassName="active" to="/login">
+              <NavLink className="link" activeClassName="active" to="/store/login">
                 <div className="b-col">
                   <div className="b-link">
                     <div className="b-icon">

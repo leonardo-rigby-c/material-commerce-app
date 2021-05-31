@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 // import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import axios from 'axios';
+import '../styles/store/Register.css'
+
 
 class Register extends React.Component {
     constructor(props) {
@@ -29,14 +31,14 @@ class Register extends React.Component {
   
         console.log(credentials);
         
-        const api = 'http://webdevelopersgdl.com/comercializadora/comercializadora-api/userRegister.php';
+        const api = 'http://webdevelopersgdl.com/comercializadora-material/api/signup/user.php';
   
         axios.post(api, JSON.stringify(credentials))
           .then(function (response) {
               console.log(response);
               if(response.status === 201 ){
                 // rthis.callCreatedAlert();
-                alert("User created Succesfully!");
+                window.location.href="/store/login/";
               }
           }
         ).catch(function (error) {
@@ -50,26 +52,26 @@ class Register extends React.Component {
             <div className="row">
               <div className="col-xs-12 col-sm-6 col-md-4">
               </div>
-              <div className="col-xs-12 col-sm-6 col-md-4 central-container">
+              <div className="col-xs-12 col-sm-6 col-md-4 register">
                 <h3 className="text-center">Signup</h3>
               <form onSubmit={this.handleSubmit}>
-              <label className="text-success">
-                  UserName: {this.state.username}
+              <label >
+                  UserName: 
                   </label>
 
                   <input className="form-control" type="text" required value={this.state.username} onChange={(event) => this.setState({ username: event.target.value})} />
-                <label className="text-success">
-                  Email: {this.state.email}
+                <label >
+                  Email: 
                   </label>
 
                   <input className="form-control" type="email" required value={this.state.email} onChange={(event) => this.setState({ email: event.target.value})} />
-                <label className="text-success">
-                  Password: {this.state.password.length}
+                <label >
+                  Password: 
                   </label>
                   <input className="form-control" type="password" required value={this.state.password} onChange={(event) => this.setState({ password: event.target.value})} />
                   <br />
                   <div className="center-item">
-                    <button className="submit-btn center-item" type="submit" value="Submit" >Submit</button>
+                    <button className="btn submit-btn  boton-register" type="submit" value="Submit" >Aceptar</button>
                   </div>
               </form>
 

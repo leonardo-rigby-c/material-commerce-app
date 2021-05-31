@@ -1,16 +1,14 @@
-.login{
+
+.register{
     background-color:white;
     border-radius: 15px;
-    padding: 25px;
+    padding: 3%;
     box-shadow: 2px 2px 2px 2px var(--orange);
     margin-bottom: 20%;
+    color:black;
 }
-
-.center-item{
-    padding-left: 33%;
-}
-.boton-login{
-    background-color: var(--orange);
+.boton-register{
+    background: var(--orange);
     color:white;
-
+    
 }

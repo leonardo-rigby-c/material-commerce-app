@@ -1,3 +1,36 @@
-.fondo-input{
-    background-image: url(/assets/ilustrations/pexels-tiger-lily-4483775.jpg);
+.input-text{
+    color:var(--orange);
+    text-align: center;
+    margin-top: 10%;
+}
+.slogan{
+    margin-top: -5%;
+}
+.input input{
+    border-radius: 30px;
+    height: 95%;
+
+}
+.input{
+    margin-top: 5%;
+    margin-bottom: 25%;
+}
+.fa-search{
+    padding: 2%;
+    color: white;
+font-size: 27px;
+position: absolute;
+left: 92.3%;
+margin-top: -62px;
+background-color: var(--orange);
+border-radius: 50%;
+height: 95%;
+width: 7%;
+box-shadow: -1px 0px 7px -3px black;
+}
+.fa-search:hover{
+    color: gray;
+
+    cursor: pointer;
+
 }
