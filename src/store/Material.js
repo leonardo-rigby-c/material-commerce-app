@@ -18,9 +18,11 @@ class Material extends React.Component {
       salePrice: '',
       referenceCode: '',
       csvfile: undefined,
+      product:[]
     };
     
     this.setMaterial =this.setMaterial.bind(this);
+    this.getTableProducts=this.getTableProducts.bind(this);
   }
  /* handleChange = (event) => {
     this.setState({
@@ -40,6 +42,30 @@ class Material extends React.Component {
     var data = result.data;
     console.log(data);
   }*/
+  getTableProducts(){
+    const vm = this;
+    const api = 'http://webdevelopersgdl.com/comercializadora-material/api/product/';
+    const config = {
+      headers: {
+        'Authorization': `Basic ${localStorage.getItem("jwt")}`
+      },
+    };
+    axios.get(api,config)
+      .then(function (response) {
+        console.log( response.data.data);
+        vm.setState({
+          product: response.data.data
+        });
+       
+      }
+    ).catch(function (error) {
+     console.log(error);
+      
+    });
+  }
+  componentDidMount(){
+   this.getTableProducts();
+  }
   setMaterial(event) {
     const rthis = this;
     event.preventDefault();
@@ -67,12 +93,14 @@ class Material extends React.Component {
     axios.post(api, JSON.stringify(credentials),config)
       .then(function (response) {
           console.log(response);
-         
+          this.getTableProducts();
+         document.getElementById("boton-cerrar-modal").click();
 
           
       }
     ).catch(function (error) {
       localStorage.clear();
+      window.location.href="/store/login/";
       
     });
   }
@@ -80,6 +108,7 @@ class Material extends React.Component {
   openModal() {}
 
   render() {
+    const {product } = this.state;
     return (
       <div className="container container-material">
         <div className="row">
@@ -116,7 +145,19 @@ class Material extends React.Component {
                 </tr>
               </thead>
               <tbody>
-               
+              {product.map(item => (         
+          
+          <tr key={item.id}>
+            <th className="text-center" >{item.stock}</th>
+            <td className="text-center">{item.name}</td>
+            <td className="text-center">{item.price}</td>
+            <td className="text-center">{item.type}</td>
+            <td className="text-center">{item.referenceCode}</td>
+            <td className="text-center">{item.salePrice}</td>
+            <td className="text-center">{item.description}</td>
+          </tr>
+
+        ))}
                   
               </tbody>
             </table>
@@ -158,7 +199,7 @@ class Material extends React.Component {
                     <button
                       type="button"
                       class="btn btn-primary opt"
-                      onClick="{this.importCSV}"
+                      onClick=""
                     >
                       Descargar Excel
                     </button>
@@ -236,6 +277,7 @@ class Material extends React.Component {
                   </div>
                   <div class="modal-footer">
                     <button
+                    id="boton-cerrar-modal"
                       type="button"
                       class="btn btn-danger"
                       data-dismiss="modal"
