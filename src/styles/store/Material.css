@@ -39,7 +39,7 @@ margin-bottom: 25%;
 }
 
 .add-one {
-    color: red;
+    color: yellowgreen;
 }
 
 .boton-cancelar {
@@ -84,4 +84,18 @@ margin-bottom: 25%;
 .acept-add-one{
     background-color: var(--orange);
     color: white;
+}
+.fa-trash{
+    color: red;
+    font-size: 20px;
+    cursor: pointer;
+}
+.boton-categorias{
+    margin-left: 22%;
+}
+.table-categorias{
+    height: 300px;
+    overflow-x: auto;
+    overflow-y: auto;
+
 }

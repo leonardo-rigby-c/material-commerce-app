@@ -23,7 +23,7 @@ class Login extends React.Component{
   
         console.log(credentials);
         
-        const api = 'http://webdevelopersgdl.com/comercializadora-material/api/login/index.php';
+        const api = 'http://webdevelopersgdl.com/comercializadora-material/api/login/';
   
         axios.post(api, JSON.stringify(credentials))
           .then(function (response) {

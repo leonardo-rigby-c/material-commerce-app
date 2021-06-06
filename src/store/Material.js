@@ -7,6 +7,7 @@ class Material extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id:'',
       name: '',
       stock:'',
       description: '',
@@ -18,11 +19,21 @@ class Material extends React.Component {
       salePrice: '',
       referenceCode: '',
       csvfile: undefined,
-      product:[]
+      product:[],
+      category: [],
+      categoria: '',
+      config :{
+        headers: {
+          'Authorization': `Basic ${localStorage.getItem("jwt")}`
+        }
+      },
     };
     
-    this.setMaterial =this.setMaterial.bind(this);
-    this.getTableProducts=this.getTableProducts.bind(this);
+    this.setMaterial = this.setMaterial.bind(this);
+    this.getTableProducts = this.getTableProducts.bind(this);
+    this.deleteTableProductOne = this.deleteTableProductOne.bind(this);
+    this.getCategorias = this.getCategorias.bind(this);
+    this.setCategorias = this.setCategorias.bind(this);
   }
  /* handleChange = (event) => {
     this.setState({
@@ -42,34 +53,45 @@ class Material extends React.Component {
     var data = result.data;
     console.log(data);
   }*/
+  deleteTableProductOne(id){
+    const vm = this;
+    let data = {
+      "id": id
+    };
+    const api = 'http://webdevelopersgdl.com/comercializadora-material/api/product/'+id;
+    
+    axios.delete(api,vm.state.config)
+      .then(function (response) {
+        console.log( response);
+        vm.getTableProducts();
+      }
+    );
+  }
   getTableProducts(){
     const vm = this;
     const api = 'http://webdevelopersgdl.com/comercializadora-material/api/product/';
-    const config = {
-      headers: {
-        'Authorization': `Basic ${localStorage.getItem("jwt")}`
-      },
-    };
-    axios.get(api,config)
+   
+    axios.get(api,vm.state.config)
       .then(function (response) {
-        console.log( response.data.data);
+        console.log( response);
+        if(response.status==401){
+          localStorage.clear();
+          window.location.href="/store/login/";
+            }else{
         vm.setState({
           product: response.data.data
         });
-       
       }
-    ).catch(function (error) {
-     console.log(error);
-      
-    });
+      }
+    );
   }
   componentDidMount(){
    this.getTableProducts();
   }
   setMaterial(event) {
-    const rthis = this;
+    const vm = this;
     event.preventDefault();
-    let credentials = {
+    let data = {
       "name": this.state.name,
       "stock": this.state.stock,
       "description": this.state.description,
@@ -82,39 +104,82 @@ class Material extends React.Component {
       "referenceCode": this.state.referenceCode
     };
 
-    console.log(credentials);
+    console.log(data);
     
     const api = 'http://webdevelopersgdl.com/comercializadora-material/api/product/';
-    const config = {
-      headers: {
-        'Authorization': `Basic ${localStorage.getItem("jwt")}`
-      },
-    };
-    axios.post(api, JSON.stringify(credentials),config)
+   
+    axios.post(api, JSON.stringify(data),vm.state.config)
       .then(function (response) {
-          console.log(response);
-          this.getTableProducts();
-         document.getElementById("boton-cerrar-modal").click();
-
-          
-      }
-    ).catch(function (error) {
+        console.log(response);
+        if(response.status==401){
       localStorage.clear();
       window.location.href="/store/login/";
-      
-    });
+        }else{
+          console.log(response);
+          vm.getTableProducts();
+        
+         document.getElementById("boton-cerrar-modal").click();
+        }
+          
+      }
+    );
+  }
+
+  getCategorias(){
+    const vm = this;
+    const api = 'http://webdevelopersgdl.com/comercializadora-material/api/category/';
+   
+    axios.get(api,vm.state.config)
+      .then(function (response) {
+        console.log( response.data.data);
+        
+        vm.setState({
+          category: response.data.data
+        
+      });
+      });
+  }
+  setCategorias(){
+    const vm = this;
+      let data = {
+      "name": this.state.categoria,
+    };
+    const api = 'http://webdevelopersgdl.com/comercializadora-material/api/category/';
+   
+    axios.post(api,JSON.stringify(data),vm.state.config)
+      .then(function (response) {  
+       vm.getCategorias();
+       document.getElementById("boton-cerrar-modal-add-categoria").click();
+      });
+  }
+  deleteTableCategoriaOne(id){
+    const vm = this;
+    let data = {
+      "id": id
+    };
+    const api = 'http://webdevelopersgdl.com/comercializadora-material/api/category/'+id;
+    
+    axios.delete(api,vm.state.config)
+      .then(function (response) {
+        console.log( response);
+        vm.getCategorias();
+      }
+    );
   }
 
   openModal() {}
 
   render() {
-    const {product } = this.state;
+    const {product,category} = this.state;
     return (
       <div className="container container-material">
         <div className="row">
           <div className="col-md-2 offset-5">
             <h1>Materiales</h1>
             <hr className="hr-title" />
+          </div>
+           <div className="col-md-1  boton-categorias">
+           <button data-toggle="modal"  onClick={this.getCategorias.bind(this)} data-target="#modal-categorias" class="btn btn-primary">Categorias</button>
           </div>
           <div className="col-md-3 offset-1"></div>
         </div>
@@ -148,13 +213,14 @@ class Material extends React.Component {
               {product.map(item => (         
           
           <tr key={item.id}>
-            <th className="text-center" >{item.stock}</th>
-            <td className="text-center">{item.name}</td>
-            <td className="text-center">{item.price}</td>
-            <td className="text-center">{item.type}</td>
-            <td className="text-center">{item.referenceCode}</td>
-            <td className="text-center">{item.salePrice}</td>
-            <td className="text-center">{item.description}</td>
+            <th >{item.stock}</th>
+            <td >{item.name}</td>
+            <td >{item.price}</td>
+            <td >{item.type}</td>
+            <td >{item.referenceCode}</td>
+            <td >{item.salePrice}</td>
+            <td >{item.description}</td>
+            <td className="text-center"> <i onClick={this.deleteTableProductOne.bind(this, item.id)} className="fas fa-trash"></i></td>
           </tr>
 
         ))}
@@ -165,7 +231,7 @@ class Material extends React.Component {
             <div
               class=" modal fade"
               id="modal-csv"
-              data-bs-backdrop="static"
+              data-backdrop="static"
               tabindex="-1"
               aria-hidden="true"
             >
@@ -217,6 +283,71 @@ class Material extends React.Component {
               </div>
             </div>
 
+            
+            <div class="modal fade" id="modal-categorias" data-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="staticBackdropLabel">Categorias</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div className="row">
+          <div className="col-md-10 offset-1">
+          <table class="table  table-hover table-categorias">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+              {category.map(item => (         
+          
+          <tr key={item.id}>
+            <td >{item.name}</td>
+            <td className="text-center"> <i onClick={this.deleteTableCategoriaOne.bind(this, item.id)} className="fas fa-trash"></i></td>
+          </tr>
+
+        ))}
+                  
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#modal-categorias-add">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="modal fade" id="modal-categorias-add" data-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="staticBackdropLabel">Agregar Categoria</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div className="row">
+          <div className="col-md-11">
+          <input placeholder="categoria"  required value={this.state.categoria} onChange={(event) => this.setState({ categoria: event.target.value})}/>
+       
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="boton-cerrar-modal-add-categoria" class="btn btn-secondary " data-dismiss="modal">Cancelar</button>
+        <button type="button" onClick={this.setCategorias.bind(this)} class="btn btn-primary">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
             <div
               class="modal fade"
               id="modal-add-one"
@@ -236,7 +367,7 @@ class Material extends React.Component {
                       &times;
                     </button>
                   </div>
-                  <form onSubmit={this.setMaterial}>
+                  <form id="form-add-one" onSubmit={this.setMaterial}>
                   <div class="modal-body">
                  
 
@@ -290,12 +421,14 @@ class Material extends React.Component {
                   </div>
                 </form>
                 </div>
+              
               </div>
             </div>
           </div>
+
         </div>
 
-        <div></div>
+        
       </div>
     );
   }
