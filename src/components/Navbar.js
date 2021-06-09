@@ -2,6 +2,8 @@ import React from 'react';
 // import Avatar from './Avatar';
 import '../styles/components/Navbar.css';
 // import Sidebar from '../sidebar/Sidebar'
+import { Link, NavLink } from "react-router-dom";
+
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -10,13 +12,19 @@ class Navbar extends React.Component {
     this.state = {
       avatarSrc: '/assets/ilustrations/skateboard.svg',
       sidebarOpen: true,
-      username: localStorage.getItem("username")
+      username: localStorage.getItem("username"),
+      cantidadCArrito: localStorage.getItem("CantidadAgregada")
     };
 
-    this.togleSidebar = this.togleSidebar.bind(this)
+    this.togleSidebar = this.togleSidebar.bind(this);
+    this.redireccionComponenteCarrito = this.redireccionComponenteCarrito.bind(this);
   }
   togleSidebar() {
     this.setState({sidebarOpen: !this.state.sidebarOpen})
+  }
+  redireccionComponenteCarrito(){
+    window.location.href="/store/carrito/";
+
   }
   render() {
     return (
@@ -36,7 +44,9 @@ class Navbar extends React.Component {
             <div className="col-md-4 b-menu-icon">
               <p>{this.state.username}</p>
               <img  className="logo-img" src="/assets/ilustrations/under-construction.svg" alt="logo-ilustration" />
-              <i className="fas fa-shopping-cart "></i>
+
+              <p id="cantidad-agregada-al-carrito" onClick={this.redireccionComponenteCarrito.bind(this)}>{this.state.cantidadCArrito}</p><i  className="fas fa-shopping-cart icon-carrito" onClick={this.redireccionComponenteCarrito.bind(this)}></i>
+               
               
                {/* <Avatar src={this.state.avatarSrc}/> */}
             </div>

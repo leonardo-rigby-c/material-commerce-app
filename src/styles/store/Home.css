@@ -7,8 +7,10 @@
     margin-top: -5%;
 }
 .input input{
-    border-radius: 30px;
+    border-radius: 50px;
     height: 95%;
+    padding-left: 3%;
+
 
 }
 .input{
@@ -17,16 +19,14 @@
 }
 .fa-search{
     padding: 2%;
-    color: white;
+    color: var(--orange);
 font-size: 27px;
 position: absolute;
 left: 92.3%;
-margin-top: -62px;
-background-color: var(--orange);
+margin-top: -66px;
 border-radius: 50%;
 height: 95%;
 width: 7%;
-box-shadow: -1px 0px 7px -3px black;
 }
 .fa-search:hover{
     color: gray;
@@ -37,13 +37,14 @@ box-shadow: -1px 0px 7px -3px black;
 
 
 .fondo-input{
-    background-color: var(--orange);
-    padding: 10px;
-    border-radius: 10px;
+   
     margin-bottom: 3%;
 }
 .fondo-input input{
     width: 98%;
+    border-radius: 50px;
+    height: 95%;
+    padding-left: 3%;
 }
 .icon-search{
     color: var(--orange);
@@ -97,4 +98,8 @@ margin-top: -38px;
 .div-price .col-md-1{
     margin-top: 5%;
    
+}
+.icon-buscador-activo{
+    margin-top: -6.5%;
+    margin-left: -2%;
 }

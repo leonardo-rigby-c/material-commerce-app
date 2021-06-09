@@ -31,7 +31,7 @@ class Register extends React.Component {
   
         console.log(credentials);
         
-        const api = 'http://webdevelopersgdl.com/comercializadora-material/api/signup/user.php';
+        const api = 'http://webdevelopersgdl.com/comercializadora-material/v1/api/signup/user.php';
   
         axios.post(api, JSON.stringify(credentials))
           .then(function (response) {

@@ -6,6 +6,7 @@ import Login from './Login';
 import Home from './Home';
 import Material from './Material';
 import Users from './Users';
+import Carrito from './Carrito';
 
 class Container extends Component {
     constructor(props) {
@@ -20,6 +21,7 @@ class Container extends Component {
                 <Route path="/store/home"><Home /></Route>
                 <Route path="/store/products"><Material /></Route>
                 <Route path="/store/profile"><Users /></Route>
+                <Route path="/store/carrito"><Carrito /></Route>
             </div>
          );
     }

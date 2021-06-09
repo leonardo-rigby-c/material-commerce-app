@@ -58,7 +58,7 @@ class Material extends React.Component {
     let data = {
       "id": id
     };
-    const api = 'http://webdevelopersgdl.com/comercializadora-material/api/product/'+id;
+    const api = 'http://webdevelopersgdl.com/comercializadora-material/v1/api/product/'+id;
     
     axios.delete(api,vm.state.config)
       .then(function (response) {
@@ -69,7 +69,7 @@ class Material extends React.Component {
   }
   getTableProducts(){
     const vm = this;
-    const api = 'http://webdevelopersgdl.com/comercializadora-material/api/product/';
+    const api = 'http://webdevelopersgdl.com/comercializadora-material/v1/api/product/';
    
     axios.get(api,vm.state.config)
       .then(function (response) {
@@ -106,7 +106,7 @@ class Material extends React.Component {
 
     console.log(data);
     
-    const api = 'http://webdevelopersgdl.com/comercializadora-material/api/product/';
+    const api = 'http://webdevelopersgdl.com/comercializadora-material/v1/api/product/';
    
     axios.post(api, JSON.stringify(data),vm.state.config)
       .then(function (response) {
@@ -127,7 +127,7 @@ class Material extends React.Component {
 
   getCategorias(){
     const vm = this;
-    const api = 'http://webdevelopersgdl.com/comercializadora-material/api/category/';
+    const api = 'http://webdevelopersgdl.com/comercializadora-material/v1/api/category/';
    
     axios.get(api,vm.state.config)
       .then(function (response) {
@@ -144,7 +144,7 @@ class Material extends React.Component {
       let data = {
       "name": this.state.categoria,
     };
-    const api = 'http://webdevelopersgdl.com/comercializadora-material/api/category/';
+    const api = 'http://webdevelopersgdl.com/comercializadora-material/v1/api/category/';
    
     axios.post(api,JSON.stringify(data),vm.state.config)
       .then(function (response) {  
@@ -157,7 +157,7 @@ class Material extends React.Component {
     let data = {
       "id": id
     };
-    const api = 'http://webdevelopersgdl.com/comercializadora-material/api/category/'+id;
+    const api = 'http://webdevelopersgdl.com/comercializadora-material/v1/api/category/'+id;
     
     axios.delete(api,vm.state.config)
       .then(function (response) {
@@ -216,7 +216,7 @@ class Material extends React.Component {
             <th >{item.stock}</th>
             <td >{item.name}</td>
             <td >{item.price}</td>
-            <td >{item.type}</td>
+            <td >{item.category}</td>
             <td >{item.referenceCode}</td>
             <td >{item.salePrice}</td>
             <td >{item.description}</td>

@@ -62,9 +62,25 @@
   padding-right: 2%;
 }
 .fa-shopping-cart{
-  color: var( --orange );
-  font-size: 20px;
+  color: white;
+  background-color: var( --orange );
+  font-size: 22px;
   margin-top: 2%;
   margin-left: 3%;
+  padding: 2%;
+  border-radius: 50%;
   cursor: pointer;
+}
+.icon-carrito{
+  margin-left: -8.7%;
+  
+}
+#cantidad-agregada-al-carrito{
+  cursor: pointer;
+
+  margin-left: 8%;
+font-weight: bold;
+margin-top: -1%;
+  font-size: 1em;
+  z-index: 999;
 }
